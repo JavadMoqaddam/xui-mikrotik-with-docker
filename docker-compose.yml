@@ -32,7 +32,7 @@ services:
         volumes:
             - x-ui-data:/etc/x-ui/
         dns: 1.1.1.1
-        restart: unless-stopped
+#        restart: unless-stopped
 
 volumes:
   x-ui-data:
