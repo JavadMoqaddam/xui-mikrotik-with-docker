@@ -16,9 +16,9 @@ services:
             #- "8728:8728" #api
             #- "8729:8729" #api-ssl
             #- "13231:13231" #WireGuard
-        cap_add: 
+        cap_add:
             - NET_ADMIN
-        devices: 
+        devices:
             - /dev/net/tun
 
         restart: unless-stopped
@@ -32,8 +32,7 @@ services:
         volumes:
             - x-ui-data:/etc/x-ui/
         dns: 1.1.1.1
-#        restart: unless-stopped
+        restart: unless-stopped
 
 volumes:
   x-ui-data:
-      
