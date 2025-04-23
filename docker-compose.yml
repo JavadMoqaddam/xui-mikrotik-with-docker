@@ -16,8 +16,8 @@ services:
             #- "8728:8728" #api
             #- "8729:8729" #api-ssl
             #- "13231:13231" #WireGuard
-#        cap_add:
-#            - NET_ADMIN
+        cap_add:
+            - NET_ADMIN
         devices:
             - /dev/net/tun
 
@@ -32,7 +32,7 @@ services:
         environment:
             - XRAY_VMESS_AEAD_FORCED=false
 
-        volumes:
+        volumeshh
             - x-ui-data:/etc/x-ui
             - x-ui-cert:/root/cert
 
@@ -47,5 +47,4 @@ services:
 volumes:
     x-ui-data:
     x-ui-cert:
-
 
