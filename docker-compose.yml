@@ -32,7 +32,7 @@ services:
         environment:
             - XRAY_VMESS_AEAD_FORCED=false
 
-        volumeshh
+        volumes:
             - x-ui-data:/etc/x-ui
             - x-ui-cert:/root/cert
 
