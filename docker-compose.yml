@@ -16,23 +16,36 @@ services:
             #- "8728:8728" #api
             #- "8729:8729" #api-ssl
             #- "13231:13231" #WireGuard
-        cap_add:
-            - NET_ADMIN
+#        cap_add:
+#            - NET_ADMIN
         devices:
             - /dev/net/tun
 
         restart: unless-stopped
 
+
+
   xui:
-        image: xui:v1
-        container_name: "xui"
-        build:
-            context: .
-            dockerfile: xui.Dockerfile
+        image: ghcr.io/mhsanaei/3x-ui:latest
+        container_name: xui
+
+        environment:
+            - XRAY_VMESS_AEAD_FORCED=false
+
         volumes:
-            - x-ui-data:/etc/x-ui/
+            - x-ui-data:/etc/x-ui
+            - x-ui-cert:/root/cert
+
+        ports:
+            - "2053:2053/tcp"
+            - "5656:5656/tcp"
+            - "5656:5656/udp"
+
         dns: 1.1.1.1
         restart: unless-stopped
 
 volumes:
-  x-ui-data:
+    x-ui-data:
+    x-ui-cert:
+
+
