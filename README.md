@@ -1,9 +1,5 @@
 # Connect Mikrotik and 3x-ui on Docker
 
-## 1. Install Docker
-
-<details>
-  <summary>Click for Docker details</summary>
 
 #### Usage
 
@@ -13,7 +9,6 @@
    bash <(curl -sSL https://get.docker.com)
    ```
 
-</details>
 
 2. **Clone the Project Repository:**
 
