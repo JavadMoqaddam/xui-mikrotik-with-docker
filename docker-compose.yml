@@ -46,7 +46,7 @@ services:
         dns: 1.1.1.1
         networks:
           xuinet:
-            ipv4_address: ${3XUI_PANEL_IP}
+            ipv4_address: ${XUI_PANEL_IP}
         restart: unless-stopped
 
 volumes:
