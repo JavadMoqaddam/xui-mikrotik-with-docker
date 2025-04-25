@@ -1,6 +1,6 @@
 # Connect Mikrotik and 3x-ui on Docker
 
-## Install Docker
+## 1. Install Docker
 
 <details>
   <summary>Click for Docker details</summary>
@@ -12,6 +12,8 @@
    ```sh
    bash <(curl -sSL https://get.docker.com)
    ```
+
+</details>
 
 2. **Clone the Project Repository:**
 
@@ -25,13 +27,4 @@
    ```sh
    docker compose up -d
    ```
-</details>
-- Clone the project
 
-  ```shell
-  git clone https://github.com/shervinamd/sni-proxy.git
-  ```
-
-  ```shell
-  docker compose up -d
-  ```
