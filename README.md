@@ -23,9 +23,9 @@
    ```shell
    docker network create \
     --driver=bridge \
-    --subnet=192.168.25.0/24 \
-    --ip-range=192.168.25.0/24 \
-    --gateway=192.168.25.254 \
+    --subnet=192.168.10.0/24 \
+    --ip-range=192.168.10.0/24 \
+    --gateway=192.168.10.254 \
     sninet
    ```
 
