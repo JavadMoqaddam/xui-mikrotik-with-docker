@@ -25,4 +25,13 @@
    ```sh
    docker compose up -d
    ```
+</details>
+- Clone the project
 
+  ```shell
+  git clone https://github.com/shervinamd/sni-proxy.git
+  ```
+
+  ```shell
+  docker compose up -d
+  ```
