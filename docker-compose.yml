@@ -20,7 +20,9 @@ services:
             - NET_ADMIN
         devices:
             - /dev/net/tun
-
+        networks:
+            xuinet:
+            ipv4_address: ${MIKROTIK_IP}
         restart: unless-stopped
 
 
@@ -42,9 +44,15 @@ services:
             - "5656:5656/udp"
 
         dns: 1.1.1.1
+        networks:
+          xuinet:
+            ipv4_address: ${3XUI_PANEL_IP}
         restart: unless-stopped
 
 volumes:
     x-ui-data:
     x-ui-cert:
 
+networks:
+  xuinet:
+    external: true
