@@ -17,7 +17,22 @@
    cd xui-mikrotik-with-docker
    ```
 
-3. **Start the Service:**
+
+3. **Create a suitable network for the project**
+
+   ```shell
+   docker network create \
+    --driver=bridge \
+    --subnet=192.168.25.0/24 \
+    --ip-range=192.168.25.0/24 \
+    --gateway=192.168.25.254 \
+    sninet
+   ```
+
+
+
+
+4. **Start the Service:**
 
    ```sh
    docker compose up -d
