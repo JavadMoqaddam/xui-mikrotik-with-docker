@@ -22,7 +22,8 @@ services:
             - /dev/net/tun
         networks:
             xuinet:
-                ipv4_address: ${MIKROTIK_IP}
+              ipv4_address: ${MIKROTIK_IP}
+              gateway: 192.168.10.11
         restart: unless-stopped
 
 
