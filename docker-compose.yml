@@ -1,59 +1,53 @@
 services:
-
   routeros:
-        container_name: "mikrotik"
-        image: cnsoluciones/mikrotik:latest
-        privileged: true
-        ports:
-            #- "21:21" #ftp
-            #- "22:22" #ssh
-            #- "23:23" #telnet
-            #- "80:80" #www
-            #- "443:443" #www-ssl
-            #- "1194:1194" #OVPN
-            #- "1450:1450" #L2TP
-            - "8291:8291" #winbox
-            #- "8728:8728" #api
-            #- "8729:8729" #api-ssl
-            #- "13231:13231" #WireGuard
-        cap_add:
-            - NET_ADMIN
-        devices:
-            - /dev/net/tun
-        networks:
-            xuinet:
-              ipv4_address: ${MIKROTIK_IP}
-              gateway: 192.168.10.11
-        restart: unless-stopped
-
-
+    container_name: "mikrotik"
+    image: cnsoluciones/mikrotik:latest
+    privileged: true
+    ports:
+      # - "21:21"   # ftp
+      # - "22:22"   # ssh
+      # - "23:23"   # telnet
+      # - "80:80"   # www
+      # - "443:443" # www-ssl
+      # - "1194:1194" # OVPN
+      # - "1450:1450" # L2TP
+      - "8291:8291"   # winbox
+      # - "8728:8728" # api
+      # - "8729:8729" # api-ssl
+      # - "13231:13231" # WireGuard
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    # network_mode: host
+    # networks:
+    #   xuinet:
+    #     ipv4_address: ${MIKROTIK_IP}
+    restart: unless-stopped
 
   xui:
-        image: ghcr.io/mhsanaei/3x-ui:latest
-        container_name: xui
-
-        environment:
-            - XRAY_VMESS_AEAD_FORCED=false
-
-        volumes:
-            - x-ui-data:/etc/x-ui
-            - x-ui-cert:/root/cert
-
-        ports:
-            - "2053:2053/tcp"
-            - "5656:5656/tcp"
-            - "5656:5656/udp"
-
-        dns: 1.1.1.1
-        networks:
-          xuinet:
-            ipv4_address: ${XUI_PANEL_IP}
-        restart: unless-stopped
+    image: ghcr.io/mhsanaei/3x-ui:latest
+    container_name: xui
+    environment:
+      - XRAY_VMESS_AEAD_FORCED=false
+    volumes:
+      - x-ui-data:/etc/x-ui
+      - x-ui-cert:/root/cert
+    ports:
+      - "2053:2053/tcp"
+      - "5656:5656/tcp"
+      - "5656:5656/udp"
+    dns: 1.1.1.1
+    networks:
+      xuinet:
+        ipv4_address: ${XUI_PANEL_IP}
+    restart: unless-stopped
 
 volumes:
-    x-ui-data:
-    x-ui-cert:
+  x-ui-data:
+  x-ui-cert:
 
-networks:
-  xuinet:
-    external: true
+#networks:
+#  xuinet:
+#    external: true
+
