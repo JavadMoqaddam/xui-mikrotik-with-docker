@@ -24,21 +24,17 @@ services:
   xui:
     image: ghcr.io/mhsanaei/3x-ui:latest
     container_name: xui
-    environment:
-      - XRAY_VMESS_AEAD_FORCED=false
+    hostname: test-01
+
     volumes:
-      - x-ui-data:/etc/x-ui
-      - x-ui-cert:/root/cert
+      - $PWD/db/:/etc/x-ui
+      - $PWD/cert/:/root/cert
     ports:
       - "2053:2053/tcp"
       - "5656:5656/tcp"
       - "5656:5656/udp"
-    dns: 1.1.1.1
-    #networks:
-     # xuinet:
-     #  ipv4_address: ${XUI_PANEL_IP}
     restart: unless-stopped
 
-volumes:
-  x-ui-data:
-  x-ui-cert:
+    environment:
+      XRAY_VMESS_AEAD_FORCED: "false"
+      X_UI_ENABLE_FAIL2BAN: "true"
