@@ -19,10 +19,6 @@ services:
       - NET_ADMIN
     devices:
       - /dev/net/tun
-    # network_mode: host
-    # networks:
-    #   xuinet:
-    #     ipv4_address: ${MIKROTIK_IP}
     restart: unless-stopped
 
   xui:
@@ -38,16 +34,11 @@ services:
       - "5656:5656/tcp"
       - "5656:5656/udp"
     dns: 1.1.1.1
-    networks:
-      xuinet:
-        ipv4_address: ${XUI_PANEL_IP}
+    #networks:
+     # xuinet:
+     #  ipv4_address: ${XUI_PANEL_IP}
     restart: unless-stopped
 
 volumes:
   x-ui-data:
   x-ui-cert:
-
-#networks:
-#  xuinet:
-#    external: true
-
